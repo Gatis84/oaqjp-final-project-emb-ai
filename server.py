@@ -8,6 +8,9 @@ def emo_detector():
 
     response = emotion_detector(text_to_analyze)
 
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
+
     emotion_items = [(k, v) for k, v in response.items() if k != 'dominant_emotion']
 
     emotion_str_parts = [f"'{k}': {v}" for k, v in emotion_items]
